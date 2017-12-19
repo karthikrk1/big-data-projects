@@ -1,4 +1,4 @@
-# SQOOP EXAMPLES
+# Sqoop Examples
 
 This directory contains all Sqoop commands to do various tasks for which
 Sqoop is famous for. 
