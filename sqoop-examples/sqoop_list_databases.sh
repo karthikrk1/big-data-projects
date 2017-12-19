@@ -7,6 +7,6 @@
 # and password
 
 sqoop list-databases \
- --connect jdbc:mysql://ms.itversity.com \
+ --connect jdbc:mysql://ms.itversity.com:3306 \
  --username retail_user \
  -P
