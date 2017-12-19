@@ -15,7 +15,7 @@ import org.apache.spark.SparkContext
   * Format to run:
   *
   * spark-submit --class WordCount --master [yarn/local] /path/to/jar <input-file> <output-file>
-  *  
+  *
   */
 object WordCount {
   def main(args: Array[String]): Unit = {
