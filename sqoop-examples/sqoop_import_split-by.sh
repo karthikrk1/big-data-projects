@@ -12,6 +12,7 @@
 #   * sequence generated or evenly incremented
 #   * This column should not have NULLs
 
+
 sqoop import \
  --connect jdbc:mysql://db.hostname.com:3306/db \
  --username user \
