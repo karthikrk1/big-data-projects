@@ -4,7 +4,7 @@
 # This will append the results to the existing directory if present
 # instead of throwing an exception that the directory already exists.
 # This is useful when we do incremental loads where we already have
-# some data and we need to append to it. 
+# some data and we need to append to it.
 sqoop import \
  --connect jdbc:mysql://db.hostname.com:3306/db \
  --username user \
