@@ -5,7 +5,7 @@
 # table and not all. This is part of a transformation and filtering process.
 
 sqoop import \
- --connect jdbc:mysql://db.hostname.com:3306 \
+ --connect jdbc:mysql://db.hostname.com:3306/db \
  --username user \
  -P \
  --table table_name \
