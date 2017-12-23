@@ -8,7 +8,7 @@
 # * warehouse-dir cannot be used since the table is not imported directly
 # * if num-mappers > 1 then split-by is mandatory since this may involve more
 #   than one table.
-# * The \$CONDITIONS is mandatory in the where clause and $ is a special 
+# * The \$CONDITIONS is mandatory in the where clause and $ is a special
 #   character and is escaped with a '\'
 sqoop import \
  --connect jdbc:mysql://db.hostname.com:3306/db \
