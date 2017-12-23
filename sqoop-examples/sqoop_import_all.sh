@@ -9,7 +9,7 @@
 # * It is good to use the autoreset-to-one-mapper since some table may
 #   not have a primary key and it will fail if not used.
 # * Cannot use filtering and transformation. Using --query, --where
-# * Incremental imports is not possible 
+# * Incremental imports is not possible
 
 sqoop import-all \
  --connect jdbc:mysql://db.hostname.com:3306/db \
