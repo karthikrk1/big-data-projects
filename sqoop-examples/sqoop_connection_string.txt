@@ -1,0 +1,8 @@
+This file contains a generic connection string code for Sqoop
+
+sqoop <command> \
+    --connect jdbc:<db_name>://<db-hostname>:<db-port>/<db-name> \
+    --username <username> \
+    --password <password> \ (not secure. Instead use -P which will ask for the
+                             password)
+    --other-arguments (this changes based on the operations we are executing).
