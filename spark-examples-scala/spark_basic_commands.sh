@@ -16,3 +16,9 @@ spark-shell --master yarn \
     --conf spark.ui.port=10948 \
     --num-executors 1 \
     --executor-memory 512M
+
+# this talks about opening a python shell for spark
+
+pyspark 
+
+# This will open a Python shell where we can execute spark commands via Python
