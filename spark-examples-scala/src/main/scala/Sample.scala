@@ -23,4 +23,18 @@ object Sample {
   val rawRDD = sc.parallelize(raw)
   // Reading top 10 from raw
   rawRDD.take(10)
+  //count the rows in RDD
+  rawRDD.count()
+  // get all elements as an array
+  rawRDD.collect() // never use because if size is huge than memory can
+                    // generate OOM
+  //take Sample
+  // first argument - withReplacement- can repeat,
+  // second argument - size of sample
+  rawRDD.takeSample(true, 100).foreach(println) // to print
+  // ordered sample
+  rawRDD.takeOrdered(10) // based on natural ordering
+  // do not run foreach on RDD
+  // rawRDD.foreach(println)
+  // reason, RDD are distributed and foreach is run on local machine
 }
