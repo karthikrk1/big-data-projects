@@ -32,7 +32,7 @@ object FilterExample {
   // The Boolean OR and AND are used to combine our use case
   val result = orders.filter(order => {
     val o = order.split(",")
-    (o(3) == "COMPLETE" || o(3) == "CLOSED") && (o(1).contains("2013-09"))
+    (o(3) == "COMPLETE" || o(3) == "CLOSED") && (o(1).contains("2013-08"))
   })
 
   // See some stats
