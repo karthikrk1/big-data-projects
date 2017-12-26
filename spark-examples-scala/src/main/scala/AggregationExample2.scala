@@ -10,8 +10,13 @@ object AggregationExample2 {
   val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
   val orderItemsMap = orderItems.map(oi => oi.split(",")(4).toFloat)
 
+  // Reduce acts globally on all data and hence we may not be able
+  // to use this with a per Key basis
+  // Also this is an Action and hence this triggers execution
+  // Reduce takes a function of type () and gives a scalar value
   val totalRevenue = orderItemsMap.reduce((total, revenue) => total + revenue)
 
+  // Doing a similar logic for Max and min
   val orderItemsMaxRevenue = orderItemsMap.reduce((max, revenue) => {
     if(max<revenue) revenue else max
   })
