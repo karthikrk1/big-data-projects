@@ -31,13 +31,21 @@ object OuterJoinExample {
   t._2._2 = 2
   */
 
+  // In order to get all the corresponding orders with no order Item
+  // we check where the orderItem records are None
+  // They are created as Option[T] which can have values Some or None
+  // Some means some data exist
+  // None is equivalent as in Python where there is no Data
+
   val noOrderItemData = leftOuterJoinRDD.filter(order => order._2._2 == None)
 
   val finalResult = noOrderItemData.map(order => order._2._1)
 
   finalResult.take(10).foreach(println)
 
-  // Doing with right outer join
+  // Doing the same with right outer join
+  // just the order varies
+  // the tuple access also need to change
 
   val rightOuterJoinRDD = orderItemsMap.rightOuterJoin(ordersMap)
 
