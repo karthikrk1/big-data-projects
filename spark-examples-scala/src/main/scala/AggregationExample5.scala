@@ -9,7 +9,7 @@ object AggregationExample5 {
 
   // total and max revenue in one iteration
 
-  val orderItems = sc.textFile("hdfs:///public/retail_db/order_items")
+  val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
   val orderItemsMap = orderItems.map(oi => (oi.split(",")(1).toInt, oi.split(",")(4).toFloat))
   // I/p => (order_id, order_item_subtotal)
   // O/p => (order_id, (total_revenue, max_order_item_subtotal))
