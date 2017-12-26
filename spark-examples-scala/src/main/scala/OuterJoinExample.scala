@@ -9,9 +9,9 @@ object OuterJoinExample {
   // Get all the orders which do not have corresponding entry in order_items
 
   // Read the files as RDDs
-  val orders = sc.textFile("hdfs:///public/retail_db/orders")
+  val orders = sc.textFile("hdfs:///user/karthik/orders")
 
-  val orderItems = sc.textFile("hdfs:///public/retail_db/order_items")
+  val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
 
   // Create a PairedRDD for Join
   val ordersMap = orders.map(order => (order.split(",")(0).toInt, order))
