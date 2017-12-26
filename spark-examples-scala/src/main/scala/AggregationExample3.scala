@@ -28,7 +28,7 @@ object AggregationExample3 {
   /*
   (2, 100.0)
   (2, 99.0)
-  and so on based on each key. 
+  and so on based on each key.
    */
   val descOrder = orderItemsGBK.flatMap(r => {
     r._2.toList.sortBy(o => -o).map(k=> (r._1, k))
