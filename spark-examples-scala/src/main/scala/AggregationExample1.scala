@@ -8,6 +8,9 @@ object AggregationExample1 {
   val sc = new SparkContext(conf)
 
   // extract order status and count by key
+  // order status is the fourth column and hence array index 3
+  // Schema:
+  // order_id, customer_id, order_date, order_status
   val orders = sc.textFile("hdfs:///user/karthik/orders")
 
   val ordersMap = orders.map(order => (order.split(",")(3),1)).countByKey
