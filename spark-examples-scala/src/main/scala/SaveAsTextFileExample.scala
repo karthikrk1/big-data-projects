@@ -23,5 +23,4 @@ object SaveAsTextFileExample {
     // validation
     sc.textFile("/user/karthik/order_count_example").collect.foreach(println)
   }
-
 }
