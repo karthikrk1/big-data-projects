@@ -4,7 +4,7 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object SetOperationsExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Ranking By Key Example")
+    val conf = new SparkConf().setAppName("Set Operations Example")
       .setMaster("yarn-client")
 
     val sc = new SparkContext(conf)
