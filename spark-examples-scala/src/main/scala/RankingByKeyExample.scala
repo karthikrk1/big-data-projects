@@ -26,9 +26,23 @@ object RankingByKeyExample {
     val productsGBK = productsMap.groupByKey()
 
     /*
-    Part - 2: Use a scala collections API to work out a sample example
-    for one record
-    
+    Part - 3:
+
      */
+  }
+
+  /*
+  Part -2 : Write a generic function using Scala APIs
+   */
+  def getTopNPricedProducts(productsIterable: Iterable[String], topN: Int): Iterable[String] = {
+    val prodUniqueList = productsIterable.map(p => p.split(",")(4).toFloat).toSet.toList
+    val topNPrices = prodUniqueList.sortBy(p => -p).take(topN)
+
+    val productsSorted = productsIterable.toList.sortBy(p => -p.split(",")(4).toFloat)
+    val minTopN = topNPrices.min
+
+    val topNPricedProducts = productsSorted.takeWhile(p => p.split(",")(4).toFloat >= minTopN)
+
+    topNPricedProducts
   }
 }
