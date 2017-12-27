@@ -29,7 +29,7 @@ object GlobalRankingExample {
 
     // doing using takeOrdered
 
-    val productsAgain = sc.textFile("hdfs:///public/retail_db/products")
+    val productsAgain = sc.textFile("hdfs:///user/karthik/products")
 
     productsAgain.filter(p => p.split(",")(4) != "").takeOrdered(10)(Ordering[Float].reverse.on(p => p.split(",")(4).toFloat))
   }
