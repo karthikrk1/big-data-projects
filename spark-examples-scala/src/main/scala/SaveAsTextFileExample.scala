@@ -19,5 +19,9 @@ object SaveAsTextFileExample {
       reduceByKey((total, count) => total+count)
 
     countByStatus.saveAsTextFile("/user/karthik/order_count_example")
+
+    // validation
+    sc.textFile("/user/karthik/order_count_example").collect.foreach(println)
   }
+
 }
