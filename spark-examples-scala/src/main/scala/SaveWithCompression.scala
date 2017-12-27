@@ -4,7 +4,7 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object SaveWithCompression {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("saveAsTextFile with delimiters Example")
+    val conf = new SparkConf().setAppName("saveAsTextFile with compression Example")
       .setMaster("yarn-client")
 
     val sc = new SparkContext(conf)
