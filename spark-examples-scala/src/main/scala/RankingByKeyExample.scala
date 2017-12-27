@@ -26,9 +26,13 @@ object RankingByKeyExample {
     val productsGBK = productsMap.groupByKey()
 
     /*
-    Part - 3:
-
+    Part - 3: Use function from part-2 for solution
      */
+    val top5ByCategory = productsGBK.flatMap(rec => getTopNPricedProducts(rec._2,5))
+
+    top5ByCategory.count()
+
+    top5ByCategory.take(100).foreach(println)
   }
 
   /*
