@@ -6,6 +6,10 @@ load data local inpath '/data/orders' into table orders;
 
 load data local inpath '/data/order_items' into table order_items;
 
+-- customer (also uses text file)
+
+load data local inpath '/data/customers' into table customers;
+
 
 -- loading for ORC files. Select from the already existing table
 
