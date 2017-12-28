@@ -1,4 +1,4 @@
-// case 
+// case
 select order_status, case when order_status IN ('CLOSED', 'COMPLETE') then 'No Action'
                           when order_status IN ('ON_HOLD', 'PROCESSING', 'PENDING', 'PAYMENT_REVIEW', 'PENDING_PAYMENT') then 'Pending Action'
                           else 'Risky'
