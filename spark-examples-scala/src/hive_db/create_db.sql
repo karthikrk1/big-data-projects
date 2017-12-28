@@ -2,3 +2,4 @@
 
 create database karthik_db;
 
+create database karthik_orc;
