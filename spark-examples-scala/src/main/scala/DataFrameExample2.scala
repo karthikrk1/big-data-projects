@@ -10,6 +10,9 @@ object DataFrameExample2 {
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
 
+    // for resolving implicit function calls
+    import sqlContext.implicits._
+
     // read RDD
     val ordersRDD = sc.textFile("/public/retail_db/orders")
 
