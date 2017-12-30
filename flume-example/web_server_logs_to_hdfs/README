@@ -1,0 +1,14 @@
+# This is an example flume application
+
+# Source - exec
+# Sink - hdfs
+# Channel - memory
+
+The exec source is used to run some commands on the source especially webserver logs to get the logs into the flume. 
+
+The hdfs sink is for storing the data in HDFS under the path that is configured
+
+The channel is once again memory.
+
+Once run_flume.sh is run, it tails the logs from the webserver and writes to a file in HDFS based on the path and other configurations in the .conf file
+
