@@ -1,0 +1,16 @@
+# This is an example flume application
+
+# Source - netcat
+# Sink - logger
+# Channel - memory
+# 
+# The source and sink are netcat and logger. netcat can simulate a webserver for testing
+# Once the flume command is run as part of run_flume.sh, open another terminal window and type the following command
+
+telnet localhost 44444
+
+Once this telnet session opens, the text we type here are sent to the flume and then displayed
+
+This is displayed in the terminal as we use the logger as sink
+
+
