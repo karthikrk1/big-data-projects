@@ -7,15 +7,15 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object DailyRevenue {
   def main(args: Array[String]) = {
-    val conf = new SparkConf().setMaster("yarn-client").
+    val conf = new SparkConf().setMaster(args(0)).
       setAppName("Daily Revenue")
 
     val sc = new SparkContext(conf)
 
     // Read the Orders and OrderItems files from HDFS
-    val orders = sc.textFile("/user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
-    val orderItems = sc.textFile("/user/karthik/order_items")
+    val orderItems = sc.textFile(args(2))
 
     // Filter for only Status = CLOSED and COMPLETE
     val ordersFiltered = orders.filter(order => order.split(",")(3) == "CLOSED" || order.split(",")(3) == "COMPLETE")
@@ -35,7 +35,7 @@ object DailyRevenue {
     val dailyRevenuePerProductId = ordersJoinMap.reduceByKey((revenue, order_item_subtotal) => revenue + order_item_subtotal)
 
     // Read Products file from local FS
-    val productsList = scala.io.Source.fromFile("/data/products/part-00000").getLines.toList
+    val productsList = scala.io.Source.fromFile(args(3)).getLines.toList
 
     // Use the parallelize method to convert to RDD
     val products = sc.parallelize(productsList)
@@ -56,6 +56,6 @@ object DailyRevenue {
     val finalResult = dailyRevenuePerProductSorted.map(r => r._2._1 + "," + r._2._2 + "," + r._2._3)
 
     // Save to local FS
-    finalResult.saveAsTextFile("/user/karthik/daily_revenue_txt") // As text file
+    finalResult.saveAsTextFile(args(4)) // As text file
   }
 }
