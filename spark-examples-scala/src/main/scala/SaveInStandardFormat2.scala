@@ -6,7 +6,7 @@ import org.apache.spark.sql.SQLContext
 object SaveInStandardFormat2 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Save in standard formats Example")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
 
     val sc = new SparkContext(conf)
 
@@ -16,12 +16,12 @@ object SaveInStandardFormat2 {
     // json, orc, parquet and avro
 
     // Using write and read API
-    val ordersDF = sqlContext.read.json("/user/krk_json/orders")
+    val ordersDF = sqlContext.read.json(args(1))
 
     // write needs the type as argument
-    ordersDF.write.orc("/user/karthik/orders_orc")
+    ordersDF.write.orc(args(2))
 
     // read for validating using show method
-    sqlContext.read.orc("/user/karthik/orders_orc").show
+    sqlContext.read.orc(args(3)).show
   }
 }

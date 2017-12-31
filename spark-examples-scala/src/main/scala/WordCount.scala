@@ -19,7 +19,7 @@ import org.apache.spark.SparkContext
   */
 object WordCount {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Word Count")
+    val conf = new SparkConf().setAppName("Word Count").setMaster(args(0))
     val sc = new SparkContext(conf)
     // This makes sure INFO doesn't get shown. But for learning purposes
     // this step can be avoided to see how the job works in each step

@@ -5,11 +5,11 @@ import org.apache.spark.{SparkContext, SparkConf}
 object SaveAsTextFileExample {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("saveAsTextFile Example")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
 
     val sc = new SparkContext(conf)
 
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
     // Using countByKey will give a Map instead of RDD
     // and we cannot save
@@ -18,9 +18,9 @@ object SaveAsTextFileExample {
     val countByStatus = orders.map(order => (order.split(",")(3),1)).
       reduceByKey((total, count) => total+count)
 
-    countByStatus.saveAsTextFile("/user/karthik/order_count_example")
+    countByStatus.saveAsTextFile(args(2))
 
     // validation
-    sc.textFile("/user/karthik/order_count_example").collect.foreach(println)
+    sc.textFile(args(2)).collect.foreach(println)
   }
 }

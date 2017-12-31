@@ -6,7 +6,7 @@ import org.apache.spark.sql.SQLContext
 object DataFrameExample2 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("register temp table").
-      setMaster("yarn-client")
+      setMaster(args(0))
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
 
@@ -14,7 +14,7 @@ object DataFrameExample2 {
     import sqlContext.implicits._
 
     // read RDD
-    val ordersRDD = sc.textFile("/public/retail_db/orders")
+    val ordersRDD = sc.textFile(args(1))
 
     // to show stats
     ordersRDD.take(10).foreach(println)
@@ -44,7 +44,7 @@ object DataFrameExample2 {
 
     sqlContext.sql("select order_status, count(order_status) as status_count from orders group by order_status").show
 
-    val productsRaw = scala.io.Source.fromFile("/data/retail_db/products/part-00000").getLines.toList
+    val productsRaw = scala.io.Source.fromFile(args(2)).getLines.toList
 
     val productsRDD = sc.parallelize(productsRaw)
 

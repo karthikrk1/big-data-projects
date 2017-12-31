@@ -5,11 +5,11 @@ import org.apache.spark.{SparkContext, SparkConf}
 object SetOperationsExample {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Set Operations Example")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
 
     val sc = new SparkContext(conf)
 
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
     val customer_201308 = orders.filter(order => order.split(",")(1).contains("2013-08")).map(order => order.split(",")(2).toInt)
 

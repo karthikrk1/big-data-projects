@@ -5,7 +5,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 object RankingByKeyExample {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Ranking By Key Example")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
 
     val sc = new SparkContext(conf)
 
@@ -17,7 +17,7 @@ object RankingByKeyExample {
      Part -1 Read products Data and convert to PairedRDD
              Apply groupByKey on the PairedRDD
       */
-    val products = sc.textFile("hdfs:///user/karthik/products")
+    val products = sc.textFile(args(1))
 
     val productsFiltered = products.filter(p => p.split(",")(4) != "")
 

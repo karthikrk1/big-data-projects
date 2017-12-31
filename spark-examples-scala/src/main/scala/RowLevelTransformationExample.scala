@@ -6,10 +6,10 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object RowLevelTransformationExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Row Level Transformation").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("Row Level Transformation").setMaster(args(0))
     val sc = new SparkContext(conf)
     // Read a new RDD
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
     // We are transforming the entire row using map()
     // This is done across the entire RDD
@@ -33,7 +33,7 @@ object RowLevelTransformationExample {
     })
 
     // Read a new RDD
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(2))
 
     val orderItemsPairedRDD = orderItems.map(orderItem => {
       (orderItem.split(",")(1).toInt, orderItem)

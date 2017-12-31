@@ -4,15 +4,15 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object OuterJoinExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Outer Join Example").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("Outer Join Example").setMaster(args(0))
     val sc = new SparkContext(conf)
 
     // Get all the orders which do not have corresponding entry in order_items
 
     // Read the files as RDDs
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(2))
 
     // Create a PairedRDD for Join
     val ordersMap = orders.map(order => (order.split(",")(0).toInt, order))

@@ -6,7 +6,7 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object FilterExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Filter Example").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("Filter Example").setMaster(args(0))
     val sc = new SparkContext(conf)
 
     /*
@@ -15,7 +15,7 @@ object FilterExample {
      */
 
     // Read a new RDD
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
     // Get the distinct order status
     // This is needed in case there are some status synonymous to the

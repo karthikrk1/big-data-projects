@@ -6,7 +6,7 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object RowLevelTransformationFlatMapExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Row Level Transformation").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("Row Level Transformation").setMaster(args(0))
     val sc = new SparkContext(conf)
 
     // Create a list

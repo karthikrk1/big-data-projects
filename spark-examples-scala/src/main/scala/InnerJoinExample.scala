@@ -4,13 +4,13 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object InnerJoinExample {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Inner Join Example").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("Inner Join Example").setMaster(args(0))
     val sc = new SparkContext(conf)
 
     // Create RDDs
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(2))
 
     // Make the RDDs as PairedRDDs for Join
     // This will give a (K,V) pair. where we join based on the common K

@@ -5,11 +5,11 @@ import org.apache.spark.{SparkContext, SparkConf}
 object SaveWithCompression {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("saveAsTextFile with compression Example")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
 
     val sc = new SparkContext(conf)
 
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
 
     // a simple API to count By status
 
@@ -19,9 +19,9 @@ object SaveWithCompression {
 
     // saving with compression
     // using classOf to specify the className of the compression codec
-    countByStatus.saveAsTextFile("/user/karthik/order_count_example_comp", classOf[org.apache.hadoop.io.compress.SnappyCodec])
+    countByStatus.saveAsTextFile(args(2), classOf[org.apache.hadoop.io.compress.SnappyCodec])
 
     // validation
-    sc.textFile("/user/karthik/order_count_example_comp").collect.foreach(println)
+    sc.textFile(args(2)).collect.foreach(println)
   }
 }

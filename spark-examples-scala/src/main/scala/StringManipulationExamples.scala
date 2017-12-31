@@ -6,10 +6,10 @@ import org.apache.spark.{SparkContext, SparkConf}
   */
 object StringManipulationExamples {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("String Manipulation").setMaster("yarn-client")
+    val conf = new SparkConf().setAppName("String Manipulation").setMaster(args(0))
     val sc = new SparkContext(conf)
     // Read a new RDD
-    val orders = sc.textFile("hdfs:///user/karthik/orders")
+    val orders = sc.textFile(args(1))
     // Get the first record => will be a String
     val str = orders.first
     // Split to form an array
