@@ -18,6 +18,7 @@ kafka-topics.sh \
 kafka-console-producer.sh \
   --broker-list nn01.itversity.com:6667,nn02.itversity.com:6667,rm01.itversity.com:6667 \
   --topic kafkademokrk
+  
 # Consume from a topic
 
 kafka-console-consumer.sh \
