@@ -5,7 +5,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 object AggregationExample5 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Aggregation Example with aggregateByKey")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
     val sc = new SparkContext(conf)
 
     // total and max revenue in one iteration
@@ -29,7 +29,7 @@ object AggregationExample5 {
     tuples in this example
 
      */
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(1))
     val orderItemsMap = orderItems.map(oi => (oi.split(",")(1).toInt, oi.split(",")(4).toFloat))
     // I/p => (order_id, order_item_subtotal)
     // O/p => (order_id, (total_revenue, max_order_item_subtotal))
