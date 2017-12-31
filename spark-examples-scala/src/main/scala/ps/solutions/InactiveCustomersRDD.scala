@@ -33,10 +33,10 @@ object InactiveCustomersRDD {
 
     // remove where left Outer join value is None
 
-    val filteredRDD = customerJoinOrder.filter(o => o._2._2 != None)
+    val filteredRDD = customerJoinOrder.filter(o => o._2._2 == None)
 
-    val finalResult = filteredRDD.map(o => o._2._1._1 + ", " + o._2._1._2)
+    val finalResult = filteredRDD.map(o => o._2).sortByKey().map(o => o._1._1 + ", " + o._1._2)
 
-    finalResult.coalesce(1).saveAsTextFile(args(3))
+    finalResult.saveAsTextFile(args(3))
   }
 }
