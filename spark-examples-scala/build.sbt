@@ -1,6 +1,6 @@
 name := "spark-examples-scala"
 
-version := "1.0"
+version := "1.0.1"
 
 scalaVersion := "2.10.4"
 
