@@ -5,10 +5,10 @@ import org.apache.spark.{SparkContext, SparkConf}
 object AggregationExample2 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Aggregation Example with reduce")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
     val sc = new SparkContext(conf)
 
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(1))
     val orderItemsMap = orderItems.map(oi => oi.split(",")(4).toFloat)
 
     // Reduce acts globally on all data and hence we may not be able
