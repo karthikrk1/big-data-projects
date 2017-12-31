@@ -6,7 +6,7 @@ import org.apache.spark.sql.SQLContext
   */
 object DailyRevenueDF {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("yarn-client").
+    val conf = new SparkConf().setMaster(args(0)).
       setAppName("Daily Revenue Using DataFrame")
 
     val sc = new SparkContext(conf)
@@ -20,7 +20,7 @@ object DailyRevenueDF {
     sqlContext.sql("use karthik_db_orc")
 
     // read local file
-    val productsRaw = scala.io.Source.fromFile("/data/products/part-00000").getLines.toList
+    val productsRaw = scala.io.Source.fromFile(args(1)).getLines.toList
 
     val productsRDD = sc.parallelize(productsRaw)
 
