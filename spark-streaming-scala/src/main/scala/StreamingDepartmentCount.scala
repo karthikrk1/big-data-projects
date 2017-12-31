@@ -27,7 +27,7 @@ object StreamingDepartmentCount {
 
     val departmentTraffic = departments.reduceByKey(_+_)
 
-    departmentTraffic.saveAsTextFiles("/user/karthikramakrishnan20/deptwisetraffic/cnt",".txt")
+    departmentTraffic.saveAsTextFiles("/user/karthikramakrishnan20/deptwisetraffic/cnt","txt")
 
     ssc.start()
     ssc.awaitTermination()
