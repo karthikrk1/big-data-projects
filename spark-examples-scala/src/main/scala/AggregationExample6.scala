@@ -5,12 +5,12 @@ import org.apache.spark.{SparkContext, SparkConf}
 object AggregationExample6 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Aggregation Example with sortByKey")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
     val sc = new SparkContext(conf)
     // Problem: sort product by product category id
 
     // Read RDD
-    val products = sc.textFile("hdfs:///public/retail_db/products")
+    val products = sc.textFile(args(1))
 
     // Create a PairedRDD
     val productsMap = products.map(p => (p.split(",")(1).toInt, p))
