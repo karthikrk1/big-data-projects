@@ -1,4 +1,5 @@
 # Create a topic
+
 kafka-topics.sh \
   --create \
   --zookeeper nn01.itversity.com:2181,nn02.itversity.com:2181,rm01.itversity.com:2181 \
