@@ -5,7 +5,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 object AggregationExample3 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Aggregation Example with groupByKey")
-      .setMaster("yarn-client")
+      .setMaster(args(0))
     val sc = new SparkContext(conf)
 
     // groupByKey to group all the records by key
@@ -17,7 +17,7 @@ object AggregationExample3 {
     reduceByKey and aggregateByKey
     since it does not use a combiner
      */
-    val orderItems = sc.textFile("hdfs:///user/karthik/order_items")
+    val orderItems = sc.textFile(args(1))
     val orderItemsMap = orderItems.map(oi => (oi.split(",")(1).toInt, oi.split(",")(4).toFloat))
     val orderItemsGBK = orderItemsMap.groupByKey
 
