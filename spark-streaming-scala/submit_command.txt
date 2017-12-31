@@ -1,0 +1,42 @@
+Spark and Kafka:
+===============
+
+spark-submit \
+ --class StreamingDeptCountKafka \
+ --master yarn \
+ --conf spark.ui.port=34292 \
+ --jars "/usr/hdp/2.5.0.0-1245/kafka/libs/kafka_2.10-0.8.2.1.jar,/usr/hdp/2.5.0.0-1245/kafka/libs/spark-streaming-kafka_2.10-1.6.2.jar,/usr/hdp/2.5.0.0-1245/kafka/libs/metrics-core-2.2.0.jar" \
+ spark-streaming-scala_2.10-1.0.jar yarn-client
+
+
+ Spark and Flume:
+ ===============
+
+ spark-submit \
+  --class StreamingDeptCountFlume \
+  --master yarn \
+  --conf spark.ui.port=34292 \
+  --jars "/usr/hdp/2.5.0.0-1245/spark/lib/spark-streaming-flume-sink_2.10-1.6.2.jar,/usr/hdp/2.5.0.0-1245/spark/lib/spark-streaming-flume_2.10-1.6.2.jar,/usr/hdp/2.5.0.0-1245/flume/lib/commons-lang3-3.5.jar,/usr/hdp/2.5.0.0-1245/flume/lib/flume-ng-sdk-1.5.2.2.5.0.0-1245.jar" \
+  spark-streaming-scala_2.10-1.0.jar \
+  yarn-client gw01.itversity.com 8921
+
+
+ Spark Streaming using netcat for Department wise count:
+ =======================================================
+
+
+spark-submit \
+  --class StreamingDepartmentCount \
+  --master yarn \
+  --conf spark.ui.port=34292 \
+  spark-streaming-scala_2.10-1.0.jar yarn-client gw01.itversity.com 8291
+
+
+ Spark Streaming Word Count:
+ ==========================
+
+ spark-submit \
+   --class StreamingWordCount \
+   --master yarn \
+   --conf spark.ui.port=34292 \
+   spark-streaming-scala_2.10-1.0.jar yarn-client gw01.itversity.com 9999
