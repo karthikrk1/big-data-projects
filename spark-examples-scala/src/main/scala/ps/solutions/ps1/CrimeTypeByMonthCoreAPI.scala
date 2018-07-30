@@ -1,6 +1,6 @@
-package ps.solutions
+package ps.solutions.ps1
 
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * Created by Karthik Ramakrishnan on 7/29/18.
